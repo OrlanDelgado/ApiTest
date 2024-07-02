@@ -30,7 +30,7 @@ public class TareaController {
             List<Tarea> tareas = tareaRepository.findAll();
             return ResponseEntity.ok(tareas);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error retrieving tasks: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error obtener las tareas: " + e.getMessage());
         }
     }
     
@@ -44,7 +44,7 @@ public class TareaController {
                 return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error retrieving task by ID: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error al obtener la tarea: " + e.getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ public class TareaController {
             Tarea newTarea = tareaRepository.save(tarea);
             return ResponseEntity.ok(newTarea);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error creating task: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error creando la tarea: " + e.getMessage());
         }
     }
 
@@ -74,7 +74,7 @@ public class TareaController {
                 return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error updating task: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error actualizando la tarea: " + e.getMessage());
         }
     }
 
@@ -89,7 +89,7 @@ public class TareaController {
                 return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error deleting task: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error eliminando la tarea: " + e.getMessage());
         }
     }
 }
