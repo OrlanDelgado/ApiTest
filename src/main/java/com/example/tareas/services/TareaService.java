@@ -11,31 +11,33 @@ import com.example.tareas.repository.TareaRepository;
 
 @Service
 public class TareaService {
+
     @Autowired
-    private static TareaRepository tarearepository;
+    private TareaRepository tareaRepository;
 
     public List<Tarea> getAllTareas(){
-        return tarearepository.findAll();
+        return tareaRepository.findAll();
     }
 
     public Optional<Tarea> getTareaById(String id){
-        return tarearepository.findById(id);
+        return tareaRepository.findById(id);
     }
 
     public Tarea createTask(Tarea task) {
-        return tarearepository.save(task);
+        return tareaRepository.save(task);
     }
 
     public Tarea updateTask(String id, Tarea taskDetails) {
-        Tarea task = tarearepository.findById(id).orElseThrow();
-        task.setTitle(taskDetails.getTitle());
-        task.setDescription(taskDetails.getDescription());
-        task.setCompleted(taskDetails.isCompleted());
-        return tarearepository.save(task);
+        Tarea task = tareaRepository.findById(id).orElseThrow();
+        task.setTitulo(taskDetails.getTitulo());
+        task.setDescripcion(taskDetails.getDescripcion());
+        task.setEstado(taskDetails.isEstado());
+        task.setFechaCreacion(taskDetails.getFechaCreacion());
+        return tareaRepository.save(task);
     }
 
     public void deleteTask(String id) {
-        Tarea task = tarearepository.findById(id).orElseThrow();
-        tarearepository.delete(task);
+        Tarea task = tareaRepository.findById(id).orElseThrow();
+        tareaRepository.delete(task);
     }
 }

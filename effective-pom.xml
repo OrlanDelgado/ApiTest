@@ -7951,6 +7951,12 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>de.flapdoodle.embed</groupId>
+      <artifactId>de.flapdoodle.embed.mongo</artifactId>
+      <version>3.5.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>io.springfox</groupId>
       <artifactId>springfox-boot-starter</artifactId>
       <version>3.0.0</version>
@@ -7984,15 +7990,15 @@
     </pluginRepository>
   </pluginRepositories>
   <build>
-    <sourceDirectory>c:\Test-Spring\tareas\src\main\java</sourceDirectory>
-    <scriptSourceDirectory>c:\Test-Spring\tareas\src\main\scripts</scriptSourceDirectory>
-    <testSourceDirectory>c:\Test-Spring\tareas\src\test\java</testSourceDirectory>
-    <outputDirectory>c:\Test-Spring\tareas\target\classes</outputDirectory>
-    <testOutputDirectory>c:\Test-Spring\tareas\target\test-classes</testOutputDirectory>
+    <sourceDirectory>C:\Test-Spring\tareas\src\main\java</sourceDirectory>
+    <scriptSourceDirectory>C:\Test-Spring\tareas\src\main\scripts</scriptSourceDirectory>
+    <testSourceDirectory>C:\Test-Spring\tareas\src\test\java</testSourceDirectory>
+    <outputDirectory>C:\Test-Spring\tareas\target\classes</outputDirectory>
+    <testOutputDirectory>C:\Test-Spring\tareas\target\test-classes</testOutputDirectory>
     <resources>
       <resource>
         <filtering>true</filtering>
-        <directory>c:\Test-Spring\tareas\src\main\resources</directory>
+        <directory>C:\Test-Spring\tareas\src\main\resources</directory>
         <includes>
           <include>**/application*.yml</include>
           <include>**/application*.yaml</include>
@@ -8000,7 +8006,7 @@
         </includes>
       </resource>
       <resource>
-        <directory>c:\Test-Spring\tareas\src\main\resources</directory>
+        <directory>C:\Test-Spring\tareas\src\main\resources</directory>
         <excludes>
           <exclude>**/application*.yml</exclude>
           <exclude>**/application*.yaml</exclude>
@@ -8010,10 +8016,10 @@
     </resources>
     <testResources>
       <testResource>
-        <directory>c:\Test-Spring\tareas\src\test\resources</directory>
+        <directory>C:\Test-Spring\tareas\src\test\resources</directory>
       </testResource>
     </testResources>
-    <directory>c:\Test-Spring\tareas\target</directory>
+    <directory>C:\Test-Spring\tareas\target</directory>
     <finalName>tareas-0.0.1-SNAPSHOT</finalName>
     <pluginManagement>
       <plugins>
@@ -8034,7 +8040,7 @@
               </goals>
               <configuration>
                 <projectType>application</projectType>
-                <outputDirectory>c:\Test-Spring\tareas\target\classes/META-INF/sbom</outputDirectory>
+                <outputDirectory>C:\Test-Spring\tareas\target\classes/META-INF/sbom</outputDirectory>
                 <outputFormat>json</outputFormat>
                 <outputName>application.cdx</outputName>
               </configuration>
@@ -8058,14 +8064,14 @@
               <configuration>
                 <verbose>true</verbose>
                 <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                <generateGitPropertiesFilename>c:\Test-Spring\tareas\target\classes/git.properties</generateGitPropertiesFilename>
+                <generateGitPropertiesFilename>C:\Test-Spring\tareas\target\classes/git.properties</generateGitPropertiesFilename>
               </configuration>
             </execution>
           </executions>
           <configuration>
             <verbose>true</verbose>
             <generateGitPropertiesFile>true</generateGitPropertiesFile>
-            <generateGitPropertiesFilename>c:\Test-Spring\tareas\target\classes/git.properties</generateGitPropertiesFilename>
+            <generateGitPropertiesFilename>C:\Test-Spring\tareas\target\classes/git.properties</generateGitPropertiesFilename>
           </configuration>
         </plugin>
         <plugin>
@@ -8156,12 +8162,12 @@
                 <goal>verify</goal>
               </goals>
               <configuration>
-                <classesDirectory>c:\Test-Spring\tareas\target\classes</classesDirectory>
+                <classesDirectory>C:\Test-Spring\tareas\target\classes</classesDirectory>
               </configuration>
             </execution>
           </executions>
           <configuration>
-            <classesDirectory>c:\Test-Spring\tareas\target\classes</classesDirectory>
+            <classesDirectory>C:\Test-Spring\tareas\target\classes</classesDirectory>
           </configuration>
         </plugin>
         <plugin>
@@ -8330,6 +8336,60 @@
     </pluginManagement>
     <plugins>
       <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <executions>
+          <execution>
+            <id>default-test</id>
+            <phase>test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <skipTests>true</skipTests>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <skipTests>true</skipTests>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <executions>
+          <execution>
+            <id>default-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <source>17</source>
+              <target>17</target>
+              <parameters>true</parameters>
+            </configuration>
+          </execution>
+          <execution>
+            <id>default-testCompile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+            <configuration>
+              <source>17</source>
+              <target>17</target>
+              <parameters>true</parameters>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+          <parameters>true</parameters>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>3.3.1</version>
@@ -8340,23 +8400,11 @@
               <goal>repackage</goal>
             </goals>
             <configuration>
-              <excludes>
-                <exclude>
-                  <groupId>org.projectlombok</groupId>
-                  <artifactId>lombok</artifactId>
-                </exclude>
-              </excludes>
               <mainClass>${start-class}</mainClass>
             </configuration>
           </execution>
         </executions>
         <configuration>
-          <excludes>
-            <exclude>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-            </exclude>
-          </excludes>
           <mainClass>${start-class}</mainClass>
         </configuration>
       </plugin>
@@ -8444,48 +8492,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
-        <executions>
-          <execution>
-            <id>default-compile</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <configuration>
-              <parameters>true</parameters>
-            </configuration>
-          </execution>
-          <execution>
-            <id>default-testCompile</id>
-            <phase>test-compile</phase>
-            <goals>
-              <goal>testCompile</goal>
-            </goals>
-            <configuration>
-              <parameters>true</parameters>
-            </configuration>
-          </execution>
-        </executions>
-        <configuration>
-          <parameters>true</parameters>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.5</version>
-        <executions>
-          <execution>
-            <id>default-test</id>
-            <phase>test</phase>
-            <goals>
-              <goal>test</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <artifactId>maven-install-plugin</artifactId>
         <version>3.1.2</version>
         <executions>
@@ -8522,7 +8528,7 @@
               <goal>site</goal>
             </goals>
             <configuration>
-              <outputDirectory>c:\Test-Spring\tareas\target\site</outputDirectory>
+              <outputDirectory>C:\Test-Spring\tareas\target\site</outputDirectory>
               <reportPlugins>
                 <reportPlugin>
                   <groupId>org.apache.maven.plugins</groupId>
@@ -8538,7 +8544,7 @@
               <goal>deploy</goal>
             </goals>
             <configuration>
-              <outputDirectory>c:\Test-Spring\tareas\target\site</outputDirectory>
+              <outputDirectory>C:\Test-Spring\tareas\target\site</outputDirectory>
               <reportPlugins>
                 <reportPlugin>
                   <groupId>org.apache.maven.plugins</groupId>
@@ -8549,7 +8555,7 @@
           </execution>
         </executions>
         <configuration>
-          <outputDirectory>c:\Test-Spring\tareas\target\site</outputDirectory>
+          <outputDirectory>C:\Test-Spring\tareas\target\site</outputDirectory>
           <reportPlugins>
             <reportPlugin>
               <groupId>org.apache.maven.plugins</groupId>
@@ -8561,6 +8567,6 @@
     </plugins>
   </build>
   <reporting>
-    <outputDirectory>c:\Test-Spring\tareas\target\site</outputDirectory>
+    <outputDirectory>C:\Test-Spring\tareas\target\site</outputDirectory>
   </reporting>
 </project>

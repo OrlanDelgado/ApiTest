@@ -14,11 +14,11 @@ public class Tarea {
     private String id;
 
     @NotBlank(message = "Titulo es requerido")
-    private String title;
+    private String titulo;
 
     @NotBlank(message = "Descripcion es requerido")
-    private String description;
+    private String descripcion;
 
-    private Date createdAt = new Date();
-    private boolean completed = false;
+    private Date fechaCreacion  = new Date();
+    private boolean estado = false;
 }
